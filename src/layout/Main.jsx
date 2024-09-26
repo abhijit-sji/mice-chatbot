@@ -5,8 +5,10 @@ const Main = () => {
   return (
     <div className='main-container'>
       <Navbar></Navbar>
-      <Outlet></Outlet>
-    </div >
+      <div className='h- border border-green-600 min-h-[700px] container mx-auto'>
+        <Outlet></Outlet>
+      </div>
+    </div>
   );
 };
 
