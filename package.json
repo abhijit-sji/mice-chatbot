@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@botpress/webchat": "^2.2.7",
+    "@botpress/webchat": "^2.2.8",
     "@botpress/webchat-generator": "^0.2.15",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

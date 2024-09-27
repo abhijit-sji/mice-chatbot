@@ -10,6 +10,10 @@ export default {
         primary: '#e2235e',
         secondary: '#1e5c7a',
       },
+      height: {
+        '50vh': '50vh',
+        '75vh': '75vh',
+      },
       fontFamily: {
         baskerville: ['Libre Baskerville', 'serif']
       }
