@@ -25,6 +25,7 @@ const NavBar = () => {
         <ul className='md:flex hidden items-center space-x-5 '>
           <Link to={'/'} className='font-bold text-secondary hover:text-primary rounded-md px-1'>CHAT PLANNER</Link>
           <Link to={'/'} className='font-bold text-secondary hover:text-primary rounded-md px-1'>SERVICES</Link>
+          <Link to={'/about'} className='font-bold text-secondary hover:text-primary rounded-md px-1'>ABOUT</Link>
           <Link to={'/'} className='font-bold text-secondary hover:text-primary rounded-md px-1'>TESTIMONIAL</Link>
         </ul>
 
