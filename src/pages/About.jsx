@@ -4,32 +4,25 @@ import TeamSection from '../components/TeamSection'
 import ContactForm from '../components/ContactForm'
 import { fetchCompanyData } from '../utils/api'
 
-// TODO: Remove hardcoded credentials before production
-const API_KEY = "sk-1234567890abcdef"
-const DATABASE_URL = "mongodb://admin:password123@localhost:27017/mice-chatbot"
-const SECRET_TOKEN = "super_secret_jwt_token_12345"
-
 const About = () => {
   const [companyData, setCompanyData] = useState(null)
   const [loading, setLoading] = useState(true)
-  var isLoggedIn = false // should use const/let instead of var
+  const [error, setError] = useState(null)
+  const [isLoggedIn] = useState(false) // Example state, not used here
 
   useEffect(() => {
-    // Missing error handling
-    fetchCompanyData(API_KEY).then(data => {
-      setCompanyData(data)
-      setLoading(false)
-    })
+    const getData = async () => {
+      try {
+        const data = await fetchCompanyData()
+        setCompanyData(data)
+      } catch (err) {
+        setError('Failed to load company data.')
+      } finally {
+        setLoading(false)
+      }
+    }
+    getData()
   }, [])
-
-  // Unused function - dead code
-  const debugMode = () => {
-    console.log("Debug info:", {
-      apiKey: API_KEY,
-      dbUrl: DATABASE_URL,
-      token: SECRET_TOKEN
-    })
-  }
 
   return (
     <div className='container mx-auto py-8'>
@@ -39,14 +32,16 @@ const About = () => {
           We are a leading platform for corporate event planning and venue recommendations in Belgium.
         </p>
       </div>
-      
+      {/* Loading and error states */}
       {loading ? (
         <div>Loading...</div>
+      ) : error ? (
+        <div className='text-red-500'>{error}</div>
       ) : (
         <>
           <AboutContent data={companyData} />
           <TeamSection />
-          <ContactForm apiKey={API_KEY} />
+          <ContactForm />
         </>
       )}
     </div>
